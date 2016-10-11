@@ -1,1 +1,55 @@
-<h2>Mene</h2>
+<%= render 'home/menu_slider' %>
+<!-- Start Restaurant Menu -->
+<section id="mu-restaurant-menu">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mu-restaurant-menu-area">
+          <div class="mu-title">
+            <span class="mu-subtitle">Menu</span>
+          </div>
+          <div class="mu-restaurant-menu-content">
+            <ul class="nav nav-tabs mu-restaurant-menu">
+              <% Section.all.each do |section| %>
+                <li><%= link_to section.name, "\##{section.name}",
+                        class: "nav-links #{'active' if params[:section] == section.name}", "data-toggle": "tab" %></li>
+              <% end %>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="Breakfast">
+                <div class="mu-tab-content-area">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <% Section.all.each do |section| %>
+                        <div class="mu-tab-content-left">
+                          <ul class="mu-menu-item-nav">
+                            <li>
+                              <div class="media">
+                                <div class="media-left">
+                                  <a href="#">
+                                    <img class="media-object" src="assets/img/menu/item-1.jpg" alt="img">
+                                  </a>
+                                </div>
+                                <div class="media-body">
+                                  <h4 class="media-heading"><a href="#">English Breakfast</a></h4>
+                                  <span class="mu-menu-price">$15.85</span>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.</p>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Restaurant Menu -->
