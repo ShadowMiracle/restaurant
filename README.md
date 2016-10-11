@@ -4,7 +4,7 @@
 
 Submitted by: **Nguyen Hoang Tu**
 
-Time spent: **10'** hours spent in total
+Time spent: **3h30** hours spent in total
 
 URL: **heroku-app-url**
 
@@ -12,7 +12,7 @@ URL: **heroku-app-url**
 
 ### Required:
 
-* [ ] User must be able to go two pages: Menu, and Contact Us.
+* [x] User must be able to go two pages: Menu, and Contact Us.
 * [ ] User can see the address and phone number on the contact us page.
 * [ ] User can see a basic google map on the Contact Us page.
 * [ ] User can navigate to a menu page with four sections:

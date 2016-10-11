@@ -27,13 +27,21 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Boostrap gem
+# Boostrap
 gem 'bootstrap', '~> 4.0.0.alpha4'
 
-# Tether
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+
+# Fix turbo links not triger jquery event again
+gem 'jquery-turbolinks'
+
+# Jquery Slick
+gem "jquery-slick-rails"
+
+# Font awesome
+gem "font-awesome-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
