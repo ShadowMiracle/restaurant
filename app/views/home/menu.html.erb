@@ -10,41 +10,44 @@
           </div>
           <div class="mu-restaurant-menu-content">
             <ul class="nav nav-tabs mu-restaurant-menu">
-              <% Section.all.each do |section| %>
-                <li><%= link_to section.name, "\##{section.name}",
-                        class: "nav-links #{'active' if params[:section] == section.name}", "data-toggle": "tab" %></li>
+              <% @sections.each do |section| %>
+                <li><%= link_to section.name, "#", "data-target": "\##{section.name}",
+                        class: "nav-link" %></li>
               <% end %>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-              <div class="tab-pane fade in active" id="Breakfast">
-                <div class="mu-tab-content-area">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <% Section.all.each do |section| %>
+              <% Section.all.each do |section| %>
+                <div class="tab-pane fade in" id="<%= section.name %>">
+                  <div class="mu-tab-content-area">
+                    <div class="row">
+                      <div class="col-md-6">
                         <div class="mu-tab-content-left">
                           <ul class="mu-menu-item-nav">
                             <li>
-                              <div class="media">
-                                <div class="media-left">
-                                  <a href="#">
-                                    <img class="media-object" src="assets/img/menu/item-1.jpg" alt="img">
-                                  </a>
+                              <% for i in 0..5 %>
+                                <div class="media">
+                                  <div class="media-left">
+                                    <a href="#">
+                                      <img class="media-object" src="assets/img/menu/item-1.jpg" alt="img">
+                                    </a>
+                                  </div>
+                                  <div class="media-body">
+                                    <h4 class="media-heading"><a href="#">English <%= section.name %></a></h4>
+                                    <span class="mu-menu-price">$15.85</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.</p>
+                                  </div>
                                 </div>
-                                <div class="media-body">
-                                  <h4 class="media-heading"><a href="#">English Breakfast</a></h4>
-                                  <span class="mu-menu-price">$15.85</span>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.</p>
-                                </div>
-                              </div>
+                              <% end %>
                             </li>
                           </ul>
                         </div>
-                      <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                <!-- End #{section.name} tab -->
+              <% end %>
             </div>
           </div>
         </div>

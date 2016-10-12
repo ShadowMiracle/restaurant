@@ -4,7 +4,7 @@
 
 Submitted by: **Nguyen Hoang Tu**
 
-Time spent: **4h18** hours spent in total
+Time spent: **5h** hours spent in total
 
 URL: **heroku-app-url**
 

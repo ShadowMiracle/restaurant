@@ -280,4 +280,13 @@ jQuery(function($) {
     // initialize persistent state
     jQuery('#aa-preloader-area').delay(300).fadeOut('slow'); // will fade out
   });
+
+  /* ----------------------------------------------------------- */
+  /*  13. NAV TABS
+  /* ----------------------------------------------------------- */
+  $(".nav-tabs.mu-restaurant-menu").click(function(event) {
+    var selected = $(event.target).attr("data-target");
+    $(".tab-pane").removeClass("active");
+    $(selected).addClass("active");
+  });
 });
