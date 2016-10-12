@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def menu
     @sections = Section.all
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
 
   def contact_us

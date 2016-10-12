@@ -9,6 +9,13 @@
             <span class="mu-subtitle">Menu</span>
           </div>
           <div class="mu-restaurant-menu-content">
+            <div class="nav nav-tabs mu-restaurant-menu-sort">
+              <select name="" id="sort-general">
+                <option value="0">Alphabetical</option>
+                <option value="1">Price low to high</option>
+                <option value="2">Price high to low</option>
+              </select>
+            </div>
             <ul class="nav nav-tabs mu-restaurant-menu">
               <% @sections.each do |section| %>
                 <li><%= link_to section.name, "#", "data-target": "\##{section.name}",
@@ -25,17 +32,17 @@
                         <div class="mu-tab-content-left">
                           <ul class="mu-menu-item-nav">
                             <li>
-                              <% for i in 0..5 %>
+                              <% FoodItem.where(["section_id = ?", section]).each do |item| %>
                                 <div class="media">
                                   <div class="media-left">
                                     <a href="#">
-                                      <img class="media-object" src="assets/img/menu/item-1.jpg" alt="img">
+                                      <img class="media-object" src="assets/menu/item-1.jpg" alt="img">
                                     </a>
                                   </div>
                                   <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">English <%= section.name %></a></h4>
-                                    <span class="mu-menu-price">$15.85</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.</p>
+                                    <h4 class="media-heading"><a href="#"> <%= item.name.upcase %></a></h4>
+                                    <span class="mu-menu-price"><%= item.price %></span>
+                                    <p><%= @markdown.render(item.description).html_safe %></p>
                                   </div>
                                 </div>
                               <% end %>
