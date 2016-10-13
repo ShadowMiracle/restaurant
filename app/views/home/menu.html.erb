@@ -9,51 +9,54 @@
             <span class="mu-subtitle">Menu</span>
           </div>
           <div class="mu-restaurant-menu-content">
-            <div class="nav nav-tabs mu-restaurant-menu-sort">
-              <select name="" id="sort-general">
-                <option value="0">Alphabetical</option>
-                <option value="1">Price low to high</option>
-                <option value="2">Price high to low</option>
-              </select>
-            </div>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rankingz <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <!-- We are passing the sort parameter here -->
+                <li><a class = "menu-sort" key="sort" value="originality">Originality</a></li>
+                <li><a class = "menu-sort" key="sort" value="originality">Dynamics</a></li>
+                <li><a class = "menu-sort" key="sort" value="originality">Execution</a></li>
+                <li><a class = "menu-sort" key="sort" value="originality">Battle</a></li>
+                <li><a class = "menu-sort" key="sort" value="originality">Votes</a></li>
+              </ul>
+            </li>
+            <form class="form-inline pull-xs-right">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
+            <%= submit_tag "Search", :name => nil, :class => "btn btn-outline-success" %>
+            </form>
             <ul class="nav nav-tabs mu-restaurant-menu">
               <% @sections.each do |section| %>
-                <li><%= link_to section.name, "#", "data-target": "\##{section.name}",
+                <li><%= link_to section.name, menu_path(section: section.id),
                         class: "nav-link" %></li>
               <% end %>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-              <% Section.all.each do |section| %>
-                <div class="tab-pane fade in" id="<%= section.name %>">
-                  <div class="mu-tab-content-area">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="mu-tab-content-left">
-                          <ul class="mu-menu-item-nav">
-                            <li>
-                              <% FoodItem.where(["section_id = ?", section]).each do |item| %>
-                                <div class="media">
-                                  <div class="media-left">
-                                    <a href="#">
-                                      <img class="media-object" src="assets/menu/item-1.jpg" alt="img">
-                                    </a>
-                                  </div>
-                                  <div class="media-body">
-                                    <h4 class="media-heading"><a href="#"> <%= item.name.upcase %></a></h4>
-                                    <span class="mu-menu-price"><%= item.price %></span>
-                                    <p><%= @markdown.render(item.description).html_safe %></p>
-                                  </div>
-                                </div>
-                              <% end %>
-                            </li>
-                          </ul>
-                        </div>
+              <% @fooditems.each do |item| %>
+                <div class="mu-tab-content-area">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mu-tab-content-left">
+                        <ul class="mu-menu-item-nav">
+                          <li>
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="assets/menu/item-1.jpg" alt="img">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading"><a href="#"> <%= item.name.upcase %></a></h4>
+                                <span class="mu-menu-price"><%= item.price %></span>
+                                <p><%= @markdown.render(item.description).html_safe %></p>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- End #{section.name} tab -->
               <% end %>
             </div>
           </div>
