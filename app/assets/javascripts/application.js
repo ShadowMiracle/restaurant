@@ -306,6 +306,11 @@ jQuery(function($) {
     console.log(document.location);
   });
 
+  $('#myModal').on('show.bs.modal', function (e) {
+      var loadurl = e.relatedTarget.href;
+      $(this).find('.modal-body').load(loadurl);
+  });
+
   function insertParam(key, value) {
     key = escape(key); value = escape(value);
 

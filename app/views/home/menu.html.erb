@@ -49,6 +49,7 @@
                                 <h4 class="media-heading"><a href="#"> <%= item.name.upcase %></a></h4>
                                 <span class="mu-menu-price"><%= item.price %></span>
                                 <p><%= @markdown.render(item.description).html_safe %></p>
+                                <%= link_to 'Order', food_item_path(item.id), class: "menu-order", "data-toggle": "modal", "data-target": "#myModal" %>
                               </div>
                             </div>
                           </li>
@@ -59,6 +60,24 @@
                 </div>
               <% end %>
             </div>
+            <!-- End food content -->
+            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                             <h4 class="modal-title">Modal title</h4>
+
+                        </div>
+                        <div class="modal-body"><div class="te"></div></div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
           </div>
         </div>
       </div>
