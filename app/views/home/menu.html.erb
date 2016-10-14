@@ -9,30 +9,29 @@
             <span class="mu-subtitle">Menu</span>
           </div>
           <div class="mu-restaurant-menu-content">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rankingz <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <!-- We are passing the sort parameter here -->
-                <li><a class = "menu-sort" key="sort" value="originality">Originality</a></li>
-                <li><a class = "menu-sort" key="sort" value="originality">Dynamics</a></li>
-                <li><a class = "menu-sort" key="sort" value="originality">Execution</a></li>
-                <li><a class = "menu-sort" key="sort" value="originality">Battle</a></li>
-                <li><a class = "menu-sort" key="sort" value="originality">Votes</a></li>
-              </ul>
-            </li>
+            <div class="card card-block">
+              <%= form_tag nil, method: 'get', class: 'form-group form-inline' do %>
+                <%= hidden_field_tag :section, params[:section] %>
+                  <%= select_tag :sort, options_for_select([['Name', 'name'], ["Price", 'price']]), {:class => 'form-control'} %>
+                  <%= select_tag :dir, options_for_select([['Asc', 'asc'], ["Desc", 'desc']]), {:class => 'form-control'} %>
+                  <%= submit_tag "Search", :name => nil, :class => "btn btn-secondary" %>
+
+              <% end %>
+            </div>
+
             <form class="form-inline pull-xs-right">
               <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
             <%= submit_tag "Search", :name => nil, :class => "btn btn-outline-success" %>
             </form>
             <ul class="nav nav-tabs mu-restaurant-menu">
               <% @sections.each do |section| %>
-                <li><%= link_to section.name, menu_path(section: section.id),
+                <li><%= link_to section.name, menu_path(section: section.name),
                         class: "nav-link" %></li>
               <% end %>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-              <% @fooditems.each do |fooditem| %>
+              <% @food_items.each do |fooditem| %>
                 <%= render "food_items/food", fooditem: fooditem, order_item: @order_item %>
               <% end %>
             </div>

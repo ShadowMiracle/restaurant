@@ -10,6 +10,7 @@
                   <img class="media-object" src="assets/menu/item-1.jpg" alt="img">
                 <% end %>
               </div>
+              <%= fooditem.impressionist_count(:filter=>:session_hash) %>  <i class="fa fa-eye"></i>
               <%= form_for @order_item, remote: true do |f| %>
               <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency fooditem.price %></span></h4>
                 <div class="input-group">
