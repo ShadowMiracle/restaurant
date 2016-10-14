@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subtotal: 1
+  shipping: 1
+  total: 1
+  order_name: MyString
+  order_phone_number: MyString
+  order_address: MyText
+
+two:
+  subtotal: 1
+  shipping: 1
+  total: 1
+  order_name: MyString
+  order_phone_number: MyString
+  order_address: MyText

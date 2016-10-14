@@ -1,3 +1,34 @@
-<%= hidden_field_tag :direction, params[:direction] %>
-<%= hidden_field_tag :sort, params[:sort] %>
-<%= @food_items %>
+<div class="mu-tab-content-area">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mu-tab-content-left">
+        <ul class="mu-menu-item-nav">
+          <li>
+            <div class="media">
+              <div class="media-left">
+                <%= link_to food_item_path(fooditem.id), class: "menu-order", "data-toggle": "modal", "data-target": "#myModal" do %>
+                  <img class="media-object" src="assets/menu/item-1.jpg" alt="img">
+                <% end %>
+              </div>
+              <%= form_for @order_item, remote: true do |f| %>
+              <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency fooditem.price %></span></h4>
+                <div class="input-group">
+                  <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+                  <div class="input-group-btn">
+                    <%= f.hidden_field :food_item_id, value: fooditem.id %>
+                    <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+              <div class="media-body">
+                <h4 class="media-heading"><a href="#"> <%= fooditem.name.upcase %></a></h4>
+                <span class="mu-menu-price"><%= fooditem.price %></span>
+                <p><%= @markdown.render(fooditem.description).html_safe %></p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

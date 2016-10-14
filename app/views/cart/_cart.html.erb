@@ -1,0 +1,31 @@
+<%= render 'home/contact_slider' %>
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container">
+  <div class="col-xs-6">
+    <% if @order_items.size == 0 %>
+      <p class="text-center">
+        There are no items in your cart.  Please <%= link_to "go back", menu_path %> and add some items to your cart.
+      </p>
+    <% else %>
+      <% @order_items.each do |order_item| %>
+        <%= render 'cart/cart_item', food_item: order_item.food_item, order_item: order_item, show_total: true %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-xs-6">
+    <%= form_for order_item, remote: true do |f| %>
+      <div class="row">
+        <%= f.submit "Confirm order", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -9,20 +9,18 @@
   <%= @food_item.description %>
 </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @food_item.price %>
-</p>
+<%= form_for @order_item, remote: true do |f| %>
+<h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency @food_item.price %></span></h4>
+  <div class="input-group">
+    <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+    <div class="input-group-btn">
+      <%= f.hidden_field :food_item_id, value: @food_item.id %>
+      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
 
 <p>
   <strong>Image url:</strong>
   <%= @food_item.image_url %>
 </p>
-
-<p>
-  <strong>Section:</strong>
-  <%= @food_item.section %>
-</p>
-
-<%= link_to 'Edit', edit_food_item_path(@food_item) %> |
-<%= link_to 'Back', food_items_path %>

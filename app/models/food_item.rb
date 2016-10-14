@@ -1,5 +1,6 @@
 class FoodItem < ApplicationRecord
   belongs_to :section
+  has_many :order_items
 
   def self.search(section_id, search)
     if section_id && search

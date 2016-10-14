@@ -32,32 +32,8 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-              <% @fooditems.each do |item| %>
-                <div class="mu-tab-content-area">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="mu-tab-content-left">
-                        <ul class="mu-menu-item-nav">
-                          <li>
-                            <div class="media">
-                              <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="assets/menu/item-1.jpg" alt="img">
-                                </a>
-                              </div>
-                              <div class="media-body">
-                                <h4 class="media-heading"><a href="#"> <%= item.name.upcase %></a></h4>
-                                <span class="mu-menu-price"><%= item.price %></span>
-                                <p><%= @markdown.render(item.description).html_safe %></p>
-                                <%= link_to 'Order', food_item_path(item.id), class: "menu-order", "data-toggle": "modal", "data-target": "#myModal" %>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <% @fooditems.each do |fooditem| %>
+                <%= render "food_items/food", fooditem: fooditem, order_item: @order_item %>
               <% end %>
             </div>
             <!-- End food content -->

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'cart/show'
+
+  resources :order_items
   resources :food_items
+
   root 'home#index'
 
   get 'menu' => 'home#menu'
