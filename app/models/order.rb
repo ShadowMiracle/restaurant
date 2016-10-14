@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   attr_accessor :coupon_code
     # before_create :set_order_status
   before_save :update_subtotal

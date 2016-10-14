@@ -1,18 +1,10 @@
 class FoodItem < ApplicationRecord
   belongs_to :section
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   # is_impressionable :counter_cache => true, :unique => :request_hash
   is_impressionable :counter_cache => true, :unique => :all
 
-  def self.search(section_id, search)
-    if section_id && search
-      where("section_id = ? AND name LIKE ?", "#{section_id.to_s}", "%#{search}%")
-    elsif section_id
-      where("section_id = ?", "#{section_id.to_s}")
-    elsif search
-      where("name LIKE ?", "%#{search}%")
-    else
-      all
-    end
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
   end
 end

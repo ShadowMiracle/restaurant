@@ -1,4 +1,3 @@
-<%= render 'home/menu_slider' %>
 <!-- Start Restaurant Menu -->
 <section id="mu-restaurant-menu">
   <div class="container">
@@ -9,54 +8,26 @@
             <span class="mu-subtitle">Menu</span>
           </div>
           <div class="mu-restaurant-menu-content">
-            <div class="card card-block">
-              <%= form_tag nil, method: 'get', class: 'form-group form-inline' do %>
-                <%= hidden_field_tag :section, params[:section] %>
-                  <%= select_tag :sort, options_for_select([['Name', 'name'], ["Price", 'price'], ["View", 'impressions_count']]), {:class => 'form-control'} %>
-                  <%= select_tag :dir, options_for_select([['Asc', 'asc'], ["Desc", 'desc']]), {:class => 'form-control'} %>
-                  <%= submit_tag "Search", :name => nil, :class => "btn btn-secondary" %>
-
-              <% end %>
-            </div>
-
-            <form class="form-inline pull-xs-right">
-              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
-            <%= submit_tag "Search", :name => nil, :class => "btn btn-outline-success" %>
-            </form>
-            <ul class="nav nav-tabs mu-restaurant-menu">
-              <% @sections.each do |section| %>
-                <li><%= link_to section.name, menu_path(section: section.name),
-                        class: "nav-link" %></li>
-              <% end %>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <% @food_items.each do |fooditem| %>
-                <%= render "food_items/food", fooditem: fooditem, order_item: @order_item %>
-              <% end %>
-            </div>
-            <!-- End food content -->
-            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                             <h4 class="modal-title">Modal title</h4>
-
-                        </div>
-                        <div class="modal-body"><div class="te"></div></div>
-                        <div class="modal-footer">
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
+            <%= render "navbar" %>
+            <%= render "control_row" %>
+            <%= render "food_items/menu_content" %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- /.modal -->
 <!-- End Restaurant Menu -->

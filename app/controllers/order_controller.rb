@@ -8,7 +8,6 @@ class OrderController < ApplicationController
       order_params[:total] = @order[:subtotal] + order_params[:shipping]
     end
     @order.update_attributes(order_params)
-    byebug
   end
 
   private

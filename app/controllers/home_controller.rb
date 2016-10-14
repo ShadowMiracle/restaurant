@@ -1,17 +1,22 @@
 class HomeController < ApplicationController
+  layout "large_slider", only: [:index]
   def index
   end
 
   def menu
     @sections = Section.all
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    # @fooditems = FoodItem.search(params[:section], params[:search])
+
 
     if params[:section]
       @section =  Section.where(name: params[:section]).first
       @food_items = FoodItem.where(section_id: @section.id.to_s)
     else
       @food_items = FoodItem.all
+    end
+
+    if params[:search]
+      @food_items = @food_items.search(params[:search])
     end
 
     if params[:sort]
