@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   patch 'order/update'
   get 'cart/show'
 

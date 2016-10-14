@@ -12,13 +12,15 @@
         </ul>
       </div>
 
-      <div class="col-md-6">
-        <ul class="mu-menu-item-nav">
-          <% @food_items_split[1].each do |food_item| %>
-            <%= render "food_items/food_item", food_item: food_item%>
-          <% end %>
-        </ul>
-      </div>
+      <% if @food_items_split.size > 1 %>
+        <div class="col-md-6">
+          <ul class="mu-menu-item-nav">
+            <% @food_items_split[1].each do |food_item| %>
+              <%= render "food_items/food_item", food_item: food_item%>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
