@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  patch 'order/update'
   get 'cart/show'
 
   resources :order_items

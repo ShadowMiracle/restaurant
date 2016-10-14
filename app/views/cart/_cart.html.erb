@@ -21,11 +21,15 @@
     <% end %>
   </div>
   <div class="col-xs-6">
-    <%= form_for order_item, remote: true do |f| %>
-      <div class="row">
+    <div class="row">
+      <%= form_for @cur_order, :url => order_update_path(@cur_order.id), :html => {:method => :patch} do |f| %>
+        <%= f.text_field :order_name, class: "form-control" %>
+        <%= f.text_field :order_phone_number, class: "form-control" %>
+        <%= f.text_field :order_address, class: "form-control" %>
+        <%= f.text_field :coupon_code, class: "form-control" %>
+        <%= f.hidden_field :id, value: @cur_order.id %>
         <%= f.submit "Confirm order", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-
