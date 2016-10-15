@@ -1,0 +1,25 @@
+<div class="box box-success">
+  <div class="mu-contact-left box-body">
+    <%= form_for current_order, :url => order_update_path(current_order.id),
+                                :html => {:method => :patch}, :class => "mu-contact-form" do |f| %>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <%= f.text_field :order_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <%= f.text_field :order_phone_number, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <%= f.text_field :order_address, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="coupon">Coupon code</label>
+        <%= f.text_field :coupon_code, class: "form-control" %>
+      </div>
+      <%= f.hidden_field :id, value: current_order.id %>
+      <%= f.submit "Confirm order", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

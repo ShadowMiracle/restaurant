@@ -3,10 +3,12 @@ class OrderController < ApplicationController
     @order = current_order
     order_params[:shipping] = 20000
     if order_params[:coupon_code] == "CODERSCHOOL"
+      order_params[:discount] = 0.5
       order_params[:total] = @order[:subtotal]/2 + order_params[:shipping]
     else
       order_params[:total] = @order[:subtotal] + order_params[:shipping]
     end
+    @order_items = @order.order_items
     @order.update_attributes(order_params)
   end
 

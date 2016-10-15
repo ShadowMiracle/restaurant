@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'cart/show'
 
   resources :order_items
-  resources :food_items
+  resources :food_items do
+    resources :comments
+  end
 
   root 'home#index'
 

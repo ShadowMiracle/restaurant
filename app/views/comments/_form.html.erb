@@ -1,16 +1,19 @@
-@<div class="box-footer">
-<%= form_for([@article, @article.comments.build]) do |f| %>
+<div class="box-footer">
+<%= form_for [@food_item, @food_item.comments.build], remote: true do |f| %>
   <!-- .img-push is used to add margin to elements next to floating images -->
+  <%= image_tag("avatar/user4-128x128.jpg", size: "45x45", class: "img-circle img-sm") %>
   <div class="img-push">
-    <div class="col-sm-2">
-      <%= f.text_field :username, class: "form-control input-sm", placeholder: "Username" %>
-    </div>
-    <div class="col-sm-8">
-      <%= f.text_field :body, class: "form-control input-sm", placeholder: "Write a comment" %>
-    </div>
-    <div class="col-sm-2">
+    <%= f.hidden_field :food_item_id, value: @food_item.id %>
+    <!-- <div class="col-sm-2"> -->
+      <%= f.text_field :name, class: "form-control input-sm", placeholder: "Username" %>
+    <!-- </div> -->
+    <!-- <div class="col-sm-8"> -->
+      <%= f.text_field :comment_text, class: "form-control input-sm", placeholder: "Write a comment" %>
+    <!-- </div> -->
+    <!-- <div class="col-sm-2"> -->
       <%= f.submit 'Send', :class => "btn btn-danger pull-right btn-block" %>
-    </div>
+    <!-- </div> -->
   </div>
 <% end %>
 </div>
+<!-- /.box-footer -->

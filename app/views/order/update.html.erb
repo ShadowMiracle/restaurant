@@ -1,8 +1,14 @@
-<p>“Thank you for your order</p>
-<p><%= @order.order_name %></p>
-<p><%= @order.order_phone_number %></p>
-<p><%= @order.order_address %></p>
-<p><%= @order.order_name %></p>
-<p><%= @order.order_name %></p>
-<p><%= @order.order_name %></p>
-<p><%= @order.order_name %></p>
+<section class="mu-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="mu-title">
+            <span class="mu-subtitle">Thank you for your order</span>
+          </div>
+          <div style="margin-top: 100px">
+            <%= render "content" %>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>

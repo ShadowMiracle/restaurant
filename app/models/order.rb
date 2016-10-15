@@ -8,8 +8,18 @@ class Order < ApplicationRecord
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
 
-  private
+  def get_total
+    @t = order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+    @t = @t * self.discount
+    @t = @t + self.shipping
+  end
 
+  def get_total_without_discount
+    @t = order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+    @t = @t + self.shipping
+  end
+
+  private
     def update_subtotal
       self[:subtotal] = subtotal
     end

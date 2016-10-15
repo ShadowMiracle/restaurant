@@ -25,20 +25,13 @@
               <% if @food_item.comments.size == 0 %>
                 <div class="comment-text">No review yet</div>
               <% else %>
-                <%= render @food_item.comments %>
+                <% @food_item.comments.each do |comment| %>
+                  <%= render "comments/comment", comment: comment %>
+                <% end %>
               <% end %>
             </div>
             <!-- /.box-footer -->
-            <div class="box-footer">
-              <form action="#" method="post">
-                <%= image_tag("avatar/user4-128x128.jpg", size: "45x45", class: "img-circle img-sm") %>
-                <!-- .img-push is used to add margin to elements next to floating images -->
-                <div class="img-push">
-                  <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
-                </div>
-              </form>
-            </div>
-            <!-- /.box-footer -->
+            <%= render "comments/form"%>
           </div>
           <!-- End comment section -->
         </div>

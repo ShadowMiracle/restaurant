@@ -2646,3 +2646,35 @@
    max-height: 300px;
    overflow-y: scroll;
 }
+
+/*==================
+ MENU ITEM SECTION
+====================*/
+.mu-section {
+  display: inline;
+  float: left;
+  width: 100%;
+  padding: 25px 0;
+}
+
+.table tbody>tr>td{
+    vertical-align: middle;
+}
+
+.order-item {
+   font-family: "enriqueta", sans-serif;
+}
+
+.btn-order {
+   color: #AAA !important;
+   padding: 5px !important;
+   font-size: 15px;
+}
+
+.h-divider{
+ margin-top:5px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid black;
+}
