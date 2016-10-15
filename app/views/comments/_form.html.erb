@@ -4,15 +4,24 @@
   <%= image_tag("avatar/user4-128x128.jpg", size: "45x45", class: "img-circle img-sm") %>
   <div class="img-push">
     <%= f.hidden_field :food_item_id, value: @food_item.id %>
-    <!-- <div class="col-sm-2"> -->
-      <%= f.text_field :name, class: "form-control input-sm", placeholder: "Username" %>
-    <!-- </div> -->
-    <!-- <div class="col-sm-8"> -->
-      <%= f.text_field :comment_text, class: "form-control input-sm", placeholder: "Write a comment" %>
-    <!-- </div> -->
-    <!-- <div class="col-sm-2"> -->
-      <%= f.submit 'Send', :class => "btn btn-danger pull-right btn-block" %>
-    <!-- </div> -->
+    <div class="row">
+      <div class="col-xs-6">
+        <%= f.text_field :name, class: "form-control input-sm", placeholder: "Username" %>
+      </div>
+
+      <div class="col-xs-3">
+        <%= f.select(:star, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]), {}, {:class => 'form-control col-xs-3'}) %>
+      </div>
+      <div class="col-xs-2"><i class="fa fa-star" style="color: #f39c12"></i></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8">
+        <%= f.text_field :comment_text, class: "form-control input-sm", placeholder: "Write a comment" %>
+      </div>
+      <div class="col-xs-4">
+        <%= f.submit 'Send', :class => "btn btn-danger pull-right btn-block" %>
+      </div>
+    </div>
   </div>
 <% end %>
 </div>

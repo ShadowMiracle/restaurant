@@ -4,9 +4,9 @@
 
 Submitted by: **Nguyen Hoang Tu**
 
-Time spent: **11h46** hours spent in total
+Time spent: **20h** hours spent in total
 
-URL: **heroku-app-url**
+URL: **https://secure-spire-21248.herokuapp.com/**
 
 ## User Stories
 
@@ -39,8 +39,9 @@ URL: **heroku-app-url**
 
 * [ ] User can also filter by type of Cuisine.
 * [x] User can see how many times each menu item has been viewed, and sort items by “most viewed”.
-* [ ] User can leave a review (1-5 stars) for each dish, along with a text review.
-* [ ] User can see reviews and an average review score.
+* [x] User can leave a review (1-5 stars) for each dish, along with a text review.
+* [x] User can see reviews
+* [ ] User can see an average review score.
 * [x] User can input "CODERSCHOOL" as a coupon code on the order page, which should give a 50% discount off of the order.
 * [x] User can order more than one dish at a time.
 * [ ] User receives an email upon placing an order.
@@ -58,7 +59,7 @@ The following **known issues**:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](path-to-your-GIF-file)
+![Video Walkthrough](http://imgur.com/3pvuyuS)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -68,7 +69,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name]
+    Copyright [2016] [Nguyen Hoang Tu]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

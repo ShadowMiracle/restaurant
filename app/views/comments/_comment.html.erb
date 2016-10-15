@@ -1,12 +1,15 @@
 <div class="box-comment">
   <!-- User image -->
-  <%= image_tag("unknown_user.png", alt: "User Image", class: "img-circle img-sm") %>
+  <%= image_tag("avatar/user#{1+rand(5)}-128x128.jpg", alt: "User Image", class: "img-circle img-sm") %>
   <div class="comment-text">
-        <span class="name">
-          <%= comment.name %>
-          <span class="text-muted pull-right"><%= comment.created_at.strftime("%d-%m-%Y %H:%M") %></span>
-        </span><!-- /.username -->
+    <span class="username">
+      <%= comment.name %>
+      <span class="text-muted pull-right"><%= comment.created_at.strftime("%d-%m-%Y %H:%M") %></span>
+    </span><!-- /.username -->
+    <% (1..comment.star).each do |i| %>
+      <span><i class="fa fa-star" style="color: #f39c12"></i></span>
+    <% end %>
+    <br>
     <%= comment.comment_text %>
   </div>
-  <!-- /.comment-text -->
 </div>
