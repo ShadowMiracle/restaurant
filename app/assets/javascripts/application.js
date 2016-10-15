@@ -296,7 +296,23 @@ jQuery(function($) {
   /* ----------------------------------------------------------- */
 
   $('#myModal').on('show.bs.modal', function (e) {
-      var loadurl = e.relatedTarget.href;
-      $(this).find('.modal-body').load(loadurl);
+    var src = e.relatedTarget.href;
+    var width = $(this).attr('data-width') || 640; // larghezza dell'iframe se non impostato usa 640
+    var height = $(this).attr('data-height') || 360; // altezza dell'iframe se non impostato usa 360
+
+    var allowfullscreen = $(this).attr('data-video-fullscreen'); // impostiamo sul bottone l'attributo allowfullscreen se è un video per permettere di passare alla modalità tutto schermo
+
+    // stampiamo i nostri dati nell'iframe
+    $("#myModal iframe").attr({
+      'src': src,
+      'height': height,
+      'width': width,
+      'allowfullscreen':''
+    });
+  });
+
+  $('#myModal').on('hide.bs.modal', function (e) {
+    $(this).find('iframe').html("");
+    $(this).find('iframe').attr("src", "");
   });
 });

@@ -13,7 +13,7 @@
       </h4>
 
       <p><%= food_item.description %></p>
-      <%= food_item.impressionist_count(:filter=>:session_hash) %>  <i class="fa fa-eye"></i>
+      <%= food_item.impressionist_count %>  <i class="fa fa-eye"></i>
       <%= form_for @order_item, remote: true do |f| %>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control order-number", min: 1 %>
